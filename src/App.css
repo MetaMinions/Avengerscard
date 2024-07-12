@@ -1,38 +1,154 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #176417, #023a02);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app{
+  font-family: "Black Ops One";
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 110px;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  position: relative;
+  width: 250px;
+  height: 290px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.card:hover {
+  transform: scale(1.05); 
 }
 
-@keyframes App-logo-spin {
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 30%
+  );
+  z-index: -1;
+  animation: spotlight 8s infinite linear;
+}
+
+@keyframes spotlight {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+.card-overlay {
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  opacity: 0.3;
+  border-radius: 15px;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card-content h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-actions {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.see-more-btn {
+  padding: 10px 20px;
+  border: 1px solid white;
+  color: white;
+  background: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.see-more-btn:hover {
+  background: white;
+  color: black;
+}
+
+.arrow-circle {
+  width: 35px;
+  height: 35px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.arrow-circle:hover {
+  background: white;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.arrow-circle:hover .arrow-icon {
+  color: black;
+}
+
+.image-circle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
